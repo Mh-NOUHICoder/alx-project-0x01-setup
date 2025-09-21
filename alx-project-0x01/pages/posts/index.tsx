@@ -1,5 +1,6 @@
 import React from "react";
 import PostCard from "@/components/common/PostCard";
+import Header from "@/components/layout/Header";
 
 const PostsPage: React.FC = () => {
   const posts = [
@@ -9,6 +10,7 @@ const PostsPage: React.FC = () => {
 
   return (
     <div className="p-6">
+      <Header />
       <h1 className="text-2xl font-bold mb-4">Posts</h1>
       <div className="grid gap-4">
         {posts.map((post) => (
