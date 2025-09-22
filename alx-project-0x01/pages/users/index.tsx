@@ -12,7 +12,7 @@ const Users: React.FC<UsersPageProps> = ({ posts }) => { // Destructure posts
     <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold my-6">Users List</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {posts.map((user) => ( // Use posts.map instead of users.map
+        {posts.map((user) => ( 
           <UserCard key={user.id} user={user} />
         ))}
       </div>

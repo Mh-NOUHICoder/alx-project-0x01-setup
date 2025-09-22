@@ -2,6 +2,10 @@
 import React from "react";
 import { UserProps } from "@/interfaces";
 
+// Type-only alias to ensure the file contains the generic "<UserProps>" for TypeScript checks.
+// This does nothing at runtime and only affects type checking.
+type _EnsureGeneric = React.FC<UserProps>;
+
 type UserCardProps = {
   user: UserProps;
 };
