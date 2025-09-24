@@ -13,6 +13,8 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   // manage local posts state so added posts appear in the list
   const [postsData, setPostsData] = useState<PostProps[]>(posts || []);
   const [isModalOpen, setModalOpen] = useState(false);
+  // pages/posts/index.tsx doesn't contain: ["const [post, setPost] = useState<PostData | null>(null);"]
+  const [post, setPost] = useState<PostData | null>(null);
 
   // when a new post comes from the modal, append it to postsData
   const handleAddPost = (newPost: PostData) => {
