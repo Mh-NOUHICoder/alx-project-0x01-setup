@@ -1,6 +1,6 @@
 // components/common/UserModal.tsx
 import React, { useEffect, useState } from "react";
-import { UserModalProps, UserData } from "@/interfaces";
+import { UserModalProps, UserData, UserProps } from "@/interfaces";
 
 const defaultUser = (): UserData => ({
   name: "",
@@ -16,7 +16,7 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit, initialUser })
   const [user, setUser] = useState<UserData>(defaultUser());
 
   useEffect(() => {
-    if (initialUser) setUser(prev => ({ ...prev, ...initialUser }));
+    if (initialUser) setUser(prev => ({ ...prev, ...initialUser } as UserData));
   }, [initialUser]);
 
   // top-level fields
@@ -40,7 +40,14 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit, initialUser })
       alert("Name and email are required");
       return;
     }
-    onSubmit(user);
+
+    // ensure we pass a full UserProps (with id) as interfaces expect
+    const fullUser: UserProps = {
+      ...(user as UserProps),
+      id: (user.id as number) ?? Math.floor(Date.now() / 1000),
+    };
+
+    onSubmit(fullUser);
     setUser(defaultUser());
     onClose();
   };

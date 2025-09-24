@@ -62,6 +62,6 @@ export interface UserData extends Omit<UserProps, "id"> {
 // Props for the UserModal component
 export interface UserModalProps {
   onClose: () => void;
-  onSubmit: (user: UserData) => void; // caller can add `id` if needed
+  onSubmit: (post: UserProps) => void; // caller can add `id` if needed
   initialUser?: Partial<UserData>;
 }
